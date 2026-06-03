@@ -3,22 +3,33 @@
   "version": "1.0.0",
   "dependencies": {
     "@cap-js/hana": "^2",
+    "@sap/approuter": "^22.0.1",
     "@sap/cds": "^9",
+    "@sap/cds-common-content": "^3.2.0",
     "@sap/xssec": "^4"
   },
   "devDependencies": {
     "@cap-js/sqlite": "^2.4",
-    "@sap/cds-dk": "^9"
+    "@sap/cds-dk": "^9",
+    "cds-plugin-ui5": "^0.13.0"
   },
   "scripts": {
-    "start": "cds-serve"
+    "start": "cds-serve",
+    "watch-interaction_items": "cds watch --open interactionitems/index.html?sap-ui-xx-viewCache=false --livereload false"
   },
   "private": true,
   "cds": {
     "requires": {
       "[production]": {
-        "auth": "xsuaa"
+        "auth": "mocked",
+        "db": "hana"
       }
     }
-  }
+  },
+  "workspaces": [
+    "app/*"
+  ],
+  "sapux": [
+    "app/interaction_items"
+  ]
 }
